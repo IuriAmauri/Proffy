@@ -1,0 +1,109 @@
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 14,
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        borderColor: '#e6e6f0',
+        borderRadius: 8,
+        marginBottom: 16,
+        overflow: 'hidden'
+    },
+
+    profile: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 16
+    },
+
+    avatar: {
+        width: 64,
+        height: 64,
+        borderRadius: 32,
+        backgroundColor: '#eee'
+    },
+
+    profileInfo: {
+        marginLeft: 16
+    },
+
+    profileName: {
+        fontFamily: 'Archivo_700Bold',
+        color: '#32264d',
+        fontSize: 20
+    },
+
+    profileSubject: {
+        fontFamily: 'Poppins_400Regular',
+        color: '#6a6180',
+        fontSize: 12,
+        marginTop: 4
+    },
+
+    bio: {
+        marginHorizontal: 14,
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 14,
+        lineHeight: 22,
+        color: '#6a6180'
+    },
+
+    footer: {
+        backgroundColor: '#fafafc',
+        padding: 16,
+        alignItems: 'center',
+        marginTop: 14
+    },
+
+    price: {
+        fontFamily: 'Poppins_400Regular',
+        color: '#6a6180',
+        fontSize: 16
+    },
+
+    priceValue: {
+        fontFamily: 'Archivo_700Bold',
+        color: '#8257e5',
+        fontSize: 16
+    },
+
+    buttonsContainer: {
+        flexDirection: 'row',
+        marginTop: 16
+    },
+
+    favoriteButton: {
+        backgroundColor: '#8257e5',
+        width: 56,
+        height: 50,
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 8
+    },
+
+    favorited: {
+        backgroundColor: '#e33d3d'
+    },
+    
+    contactButton: {
+        backgroundColor: '#04d361',
+        flex: 1,
+        flexDirection: 'row',
+        height: 50,
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 8
+    },
+
+    contactButtonText: {
+        color: '#FFF',
+        fontFamily: 'Archivo_700Bold',
+        fontSize: 16,
+        marginLeft: 16
+    }
+});
+
+export default styles;

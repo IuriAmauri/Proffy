@@ -12,7 +12,7 @@ import styles from './styles';
 export interface Teacher {
     id: number,
     name :string,
-    avatar: string,
+    avatarUrl: string,
     bio: string,
     subject: string,
     cost: number,
@@ -63,8 +63,8 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorite }) => {
         <View style={ styles.container }>
             <View style={ styles.profile }>
                 <Image 
-                    style={ styles.avatar } 
-                    source={{ uri: teacher.avatar }} 
+                    style={ styles.avatarUrl } 
+                    source={{ uri: teacher.avatarUrl }} 
                 />
                 <View style={ styles.profileInfo }>
                     <Text style={ styles.profileName }>{ teacher.name }</Text>

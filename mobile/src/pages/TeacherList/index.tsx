@@ -14,7 +14,7 @@ function TeacherList() {
     const [favorites, setFavorites] = useState<number[]>([]);
     const [teachers, setTeachers] = useState([]);
     const [subject, setSubject] = useState('');
-    const [week_day, setWeekDay] = useState('');
+    const [weekDay, setWeekDay] = useState('');
     const [time, setTime] = useState('');
 
     function loadFavorites() {
@@ -36,7 +36,7 @@ function TeacherList() {
         const response = await api.get('classes', {
             params: {
                 subject,
-                week_day,
+                weekDay,
                 time
             }
         })
@@ -80,7 +80,7 @@ function TeacherList() {
                                     style={ styles.input }
                                     placeholderTextColor="#c1bccc" 
                                     placeholder="Dia"
-                                    value={ week_day }
+                                    value={ weekDay }
                                     onChangeText={ text => setWeekDay(text) }
                                 />
                             </View>

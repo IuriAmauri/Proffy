@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         padding: 16
     },
 
-    avatar: {
+    avatarUrl: {
         width: 64,
         height: 64,
         borderRadius: 32,

@@ -7,7 +7,7 @@ import './styles.css';
 export interface Teacher {
     id: number,
     name :string,
-    avatar: string,
+    avatarUrl: string,
     bio: string,
     subject: string,
     cost: number,
@@ -28,7 +28,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     return (
         <article className="teacher-item">
             <header>
-                <img src={ teacher.avatar } alt="Iuri Girolometo"/>
+                <img src={ teacher.avatarUrl } alt="Iuri Girolometo"/>
                 <div>
                     <strong>{ teacher.name }</strong>
                     <span>{teacher.name}</span>

@@ -13,20 +13,20 @@ function TeacherForm() {
     const history = useHistory();
 
     const [name, setName] = useState("");
-    const [avatar, setAvatar] = useState("");
+    const [avatarUrl, setAvatar] = useState("");
     const [whatsapp, setWhatsApp] = useState("");
     const [bio, setBio] = useState("");
     const [subject, setSubject] = useState("");
     const [cost, setCost] = useState("");
 
     const [scheduleItems, setScheduleItems] = useState([
-        { week_day: 0, from: '', to: ''}
+        { weekDay: 0, from: '', to: ''}
     ])
 
     function addNewScheduleItem() {
         setScheduleItems([
             ...scheduleItems,
-            { week_day: 0, from: '', to: ''}
+            { weekDay: 0, from: '', to: ''}
         ]);
     }
 
@@ -45,9 +45,9 @@ function TeacherForm() {
     function createClass(e: FormEvent) {
         e.preventDefault();
 
-        api.post('classes', {
+        api.post('createclasses', {
             name,
-            avatar,
+            avatarUrl,
             whatsapp,
             bio,
             subject,
@@ -71,7 +71,7 @@ function TeacherForm() {
                     <fieldset>
                         <legend>Seus dados</legend>
                         <Input name="name" label="Nome completo" type="text" value={ name } onChange={ (e) => { setName(e.target.value) }}/>
-                        <Input name="avatar" label="Avatar" type="text" value={ avatar } onChange={ (e) => { setAvatar(e.target.value) }}/>
+                        <Input name="avatarUrl" label="Avatar" type="text" value={ avatarUrl } onChange={ (e) => { setAvatar(e.target.value) }}/>
                         <Input name="whatsapp" label="WhatsApp" type="text" value={ whatsapp } onChange={ (e) => { setWhatsApp(e.target.value) }}/>
                         <TextArea name="bio" label="Biografia" value={ bio } onChange={ (e) => { setBio(e.target.value) }}/>
                     </fieldset>
@@ -105,9 +105,9 @@ function TeacherForm() {
                         </legend>
                         {scheduleItems.map((scheduleItem, index) => {
                             return (
-                                <div key={ scheduleItem.week_day } className="schedule-item">
-                                    <Select name="week_day" value={ scheduleItem.week_day } label="Dia da Semana" 
-                                            onChange={ e => setScheduleItemValue(index, 'week_day', e.target.value) }
+                                <div key={ scheduleItem.weekDay } className="schedule-item">
+                                    <Select name="weekDay" value={ scheduleItem.weekDay } label="Dia da Semana" 
+                                            onChange={ e => setScheduleItemValue(index, 'weekDay', e.target.value) }
                                         options={[
                                             { value: "0", label: "Domingo" },
                                             { value: "1", label: "Segunda-feira" },

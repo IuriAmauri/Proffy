@@ -10,7 +10,7 @@ import './styles.css';
 function TeacherList() {
     const [teachers, setTeachers] = useState([]);
     const [subject, setSubject] = useState('');
-    const [week_day, setWeekDay] = useState('');
+    const [weekDay, setWeekDay] = useState('');
     const [time, setTime] = useState('');
 
     async function searchTeachers(e: FormEvent) {
@@ -19,7 +19,7 @@ function TeacherList() {
         const response = await api.get('classes', {
             params: {
                 subject,
-                week_day,
+                weekDay,
                 time
             }
         })
@@ -45,7 +45,7 @@ function TeacherList() {
                             { value: "Português", label:"Português" },
                             { value: "Química", label:"Química" }
                     ]}/>
-                    <Select name="week_day" label="Dia da Semana" value={ week_day }
+                    <Select name="weekDay" label="Dia da Semana" value={ weekDay }
                         onChange={ (e) => { setWeekDay(e.target.value) }}
                         options={[
                             { value: "0", label: "Domingo" },
@@ -65,7 +65,7 @@ function TeacherList() {
 
             <main>
                 { teachers.map((teacher: Teacher)  => {
-                    return <TeacherItem key={ teacher.id } teacher={ teacher } />
+                    return <TeacherItem key={ teacher.name } teacher={ teacher } />
                 })}
             </main>
         </div>

@@ -29,7 +29,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorite }) => {
 
     function handleContact() {
         api.post('connections', {
-            user_id: teacher.id
+            userId: teacher.id
         });
 
         Linking.openURL(`whatsapp://send?phone=${ teacher.whatsapp }`);

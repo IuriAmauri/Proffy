@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using api.Database.Interfaces;
 using api.Dtos;
 using api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Database
 {
@@ -14,9 +16,12 @@ namespace api.Database
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Class> GetAllClasses()
+        public IEnumerable<Class> GetAllClasses(FiltersDto filters)
         {
-            return _dbContext.Classes.ToList();
+            IQueryable<Class> query = _dbContext.Classes.Include(c => c.Schedules);
+
+            return query.Where(w => (w.Subject == filters.Subject || filters.Subject == string.Empty))
+                        .ToList();
         }
 
         public Class GetClassById(int id)

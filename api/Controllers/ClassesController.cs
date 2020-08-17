@@ -27,13 +27,20 @@ namespace api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Class>> GetAllClasses()
         {
+            var filters = new FiltersDto { 
+                Subject = Request.Query["subject"].ToString(),
+                WeekDay = Request.Query["weekDay"].ToString(),
+                Time = Request.Query["time"].ToString()
+            };
+
             var classes = new List<ClassReadDto>();
 
-            foreach (var item in _classRepository.GetAllClasses())
+            foreach (var item in _classRepository.GetAllClasses(filters))
             {
                 var user = _userRepository.GetUserById(item.UserId);
 
                 var classInfo = new ClassReadDto {
+                    UserId = user.Id,
                     Name = user.Name,
                     AvatarUrl = user.AvatarUrl,
                     Bio = user.Bio,

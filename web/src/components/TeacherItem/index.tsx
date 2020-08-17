@@ -5,7 +5,7 @@ import api from '../../services/api';
 import './styles.css';
 
 export interface Teacher {
-    id: number,
+    userId: number,
     name :string,
     avatarUrl: string,
     bio: string,
@@ -21,7 +21,7 @@ interface TeacherItemProps {
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     function createNewConnection() {
         api.post('connections', {
-            user_id: teacher.id
+            userId: teacher.userId
         });
     };
 
@@ -31,7 +31,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
                 <img src={ teacher.avatarUrl } alt="Iuri Girolometo"/>
                 <div>
                     <strong>{ teacher.name }</strong>
-                    <span>{teacher.name}</span>
+                    <span>{teacher.subject}</span>
                 </div>
             </header>
             <p> { teacher.bio } </p>

@@ -10,7 +10,7 @@ using api.Database;
 namespace api.Migrations
 {
     [DbContext(typeof(ProffyDbContext))]
-    [Migration("20200814024119_InitialMigration")]
+    [Migration("20200817032958_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,7 @@ namespace api.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Cost")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
@@ -64,7 +64,7 @@ namespace api.Migrations
                     b.ToTable("Connections");
                 });
 
-            modelBuilder.Entity("api.Entities.Schedules", b =>
+            modelBuilder.Entity("api.Entities.Schedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,6 +97,9 @@ namespace api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,9 +107,6 @@ namespace api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WhatsApp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AvatarUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -132,10 +132,10 @@ namespace api.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("api.Entities.Schedules", b =>
+            modelBuilder.Entity("api.Entities.Schedule", b =>
                 {
                     b.HasOne("api.Entities.Class", "Class")
-                        .WithMany()
+                        .WithMany("Schedules")
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

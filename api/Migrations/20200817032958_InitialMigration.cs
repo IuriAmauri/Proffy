@@ -30,7 +30,7 @@ namespace api.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Subject = table.Column<string>(nullable: true),
-                    Cost = table.Column<decimal>(nullable: false),
+                    Cost = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

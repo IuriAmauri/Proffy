@@ -80,6 +80,7 @@ function TeacherForm() {
                         <legend>Sobre a aula</legend>
                         <Select name="subject" label="Matéria" value={subject} onChange={ (e) => {setSubject(e.target.value) }}
                             options={[
+                                { value: "", label:"Selecione" },
                                 { value: "Artes", label:"Artes" },
                                 { value: "Biologia", label:"Biologia" },
                                 { value: "Ciências", label: "Ciência" },
@@ -89,7 +90,8 @@ function TeacherForm() {
                                 { value: "História", label:"História" },
                                 { value: "Matemática", label:"Matemática" },
                                 { value: "Português", label:"Português" },
-                                { value: "Química", label:"Química" }
+                                { value: "Química", label:"Química" },
+                                { value: "Programação", label:"Programação" }
                             ]}
                         />
                         <Input name="cost" label="Custo da sua hora" type="text" value={cost} onChange={ (e) => {setCost(e.target.value) }}/>

@@ -34,6 +34,7 @@ function TeacherList() {
                     <Select name="subject" label="Matéria" value={ subject }
                         onChange={ (e) => { setSubject(e.target.value) }}
                         options={[
+                            { value: "", label:"Selecione" },
                             { value: "Artes", label:"Artes" },
                             { value: "Biologia", label:"Biologia" },
                             { value: "Ciências", label: "Ciência" },
@@ -43,7 +44,8 @@ function TeacherList() {
                             { value: "História", label:"História" },
                             { value: "Matemática", label:"Matemática" },
                             { value: "Português", label:"Português" },
-                            { value: "Química", label:"Química" }
+                            { value: "Química", label:"Química" },
+                            { value: "Programação", label:"Programação" }
                     ]}/>
                     <Select name="weekDay" label="Dia da Semana" value={ weekDay }
                         onChange={ (e) => { setWeekDay(e.target.value) }}

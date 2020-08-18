@@ -43,7 +43,7 @@ function Favorites() {
                 { favorites.map((teacher: Teacher) => {
                     return (
                         <TeacherItem 
-                            key={ teacher.id }
+                            key={ teacher.userId }
                             teacher={ teacher }
                             favorite
                         />)

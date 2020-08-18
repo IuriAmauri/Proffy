@@ -4,6 +4,7 @@ using System.Linq;
 using api.Database.Interfaces;
 using api.Dtos;
 using api.Entities;
+using api.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Database
@@ -20,8 +21,19 @@ namespace api.Database
         {
             IQueryable<Class> query = _dbContext.Classes.Include(c => c.Schedules);
 
-            return query.Where(w => (w.Subject == filters.Subject || filters.Subject == string.Empty))
-                        .ToList();
+            if (filters.Subject != string.Empty)
+                query = query.Where(w => w.Subject == filters.Subject);
+
+            if (filters.WeekDay != string.Empty)
+                query = query.Where(w => w.Schedules.Any(e => e.ClassId == w.Id && e.WeekDay == Convert.ToInt32(filters.WeekDay)));
+
+            if (filters.Time != string.Empty)
+            {
+                var minutes = new StringToMinutesConversor().Convert(filters.Time);
+                query = query.Where(w => w.Schedules.Any(e => e.ClassId == w.Id && e.From <= minutes));
+            }
+
+            return query.ToList();
         }
 
         public Class GetClassById(int id)

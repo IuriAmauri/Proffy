@@ -10,7 +10,7 @@ import whatsAppIcon from '../../assets/images/icons/whatsapp.png';
 import styles from './styles';
 
 export interface Teacher {
-    id: number,
+    userId: number,
     name :string,
     avatarUrl: string,
     bio: string,
@@ -29,7 +29,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorite }) => {
 
     function handleContact() {
         api.post('connections', {
-            userId: teacher.id
+            userId: teacher.userId
         });
 
         Linking.openURL(`whatsapp://send?phone=${ teacher.whatsapp }`);
@@ -46,7 +46,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorite }) => {
 
         if (isFavorite) {
             const favoriteIndex = favoritesArray.findIndex((teacherItem: Teacher) => {
-                return teacherItem.id == teacher.id;
+                return teacherItem.userId == teacher.userId;
             });
 
             favoritesArray.splice(favoriteIndex, 1);

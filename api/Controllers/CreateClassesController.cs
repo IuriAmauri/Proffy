@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Transactions;
 using api.Database.Interfaces;
 using api.Dtos;
 using api.Entities;
+using api.Utils;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,8 +59,8 @@ namespace api.Controllers
                 {
                     var scheduleDto = new ScheduleDto {
                         WeekDay = item.WeekDay,
-                        From = item.From,
-                        To = item.To,
+                        From = new StringToMinutesConversor().Convert(item.From),
+                        To = new StringToMinutesConversor().Convert(item.To),
                         ClassId = classs.Id
                     };
 

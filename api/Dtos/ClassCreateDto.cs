@@ -12,6 +12,6 @@ namespace api.Dtos
         public string Subject { get; set; }
         public decimal Cost { get; set; }
 
-        public IEnumerable<ScheduleDto> Schedule { get; set; }
+        public IEnumerable<ScheduleCreateDto> Schedule { get; set; }
     }
 }

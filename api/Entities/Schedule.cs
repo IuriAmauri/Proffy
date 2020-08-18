@@ -4,8 +4,8 @@ namespace api.Entities
     {
         public int Id { get; set; }
         public int WeekDay { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
+        public int From { get; set; }
+        public int To { get; set; }
 
         public int ClassId { get; set; }
         public Class Class { get; set; }

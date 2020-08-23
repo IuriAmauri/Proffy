@@ -1,8 +1,8 @@
 import React from 'react';
-import whatsAppIcon from '../../assets/images/icons/whatsapp.svg';
 import api from '../../services/api';
 
-import './styles.css';
+import whatsAppIcon from '../../assets/images/icons/whatsapp.svg';
+import './styles.scss';
 
 export interface Teacher {
     userId: number,

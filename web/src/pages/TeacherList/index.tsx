@@ -5,7 +5,7 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 import api from '../../services/api';
 
-import './styles.css';
+import './styles.scss';
 
 function TeacherList() {
     const [teachers, setTeachers] = useState([]);

@@ -7,7 +7,7 @@ import Select from '../../components/Select';
 import api from '../../services/api';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
-import './styles.css';
+import './styles.scss';
 
 function TeacherForm() {
     const history = useHistory();

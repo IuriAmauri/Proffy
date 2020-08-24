@@ -1,0 +1,26 @@
+.logo-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-primary);
+    background-image: url('../../assets/images/success-background.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95%;
+    
+    .logo {
+        color: var(--color-text-in-primary);
+
+        img {
+            height: 15rem;
+            width: 100%;
+        }
+
+        h2 {
+            max-width: 300px;
+        }
+    }
+}

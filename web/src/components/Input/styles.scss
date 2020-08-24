@@ -17,6 +17,10 @@
         font: 1.6rem Archivo;
     }
 
+    input::placeholder {
+        color: var(--color-text-complement);
+    }
+
     + .input-block {
         margin-top: 1.4rem;
     }

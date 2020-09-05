@@ -48,10 +48,10 @@
 
   .container {
       width: 90vw;
-      max-width: 700px;
+      max-width: 1000px;
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 1000px) {
       :root {
           font-size: 62,5%;
       }

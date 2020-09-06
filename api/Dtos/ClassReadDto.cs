@@ -4,7 +4,7 @@ namespace api.Dtos
 {
     public class ClassReadDto
     {
-        public int UserId { get; set; }
+        public long UserId { get; set; }
         public string Name { get; set; }
         public string AvatarUrl { get; set; }
         public string WhatsApp  { get; set; }

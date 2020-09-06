@@ -4,6 +4,6 @@ namespace api.Dtos
     {
         public string Subject { get; set; }
         public decimal Cost { get; set; }
-        public int UserId { get; set; }
+        public long UserId { get; set; }
     }
 }

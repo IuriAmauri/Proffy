@@ -109,7 +109,7 @@ function TeacherForm() {
                             return (
                                 <div key={ scheduleItem.weekDay } className="schedule-item">
                                     <Select name="weekDay" value={ scheduleItem.weekDay } label="Dia da Semana" 
-                                            onChange={ e => setScheduleItemValue(index, 'weekDay', e.target.value) }
+                                        onChange={ e => setScheduleItemValue(index, 'weekDay', e.target.value) }
                                         options={[
                                             { value: "0", label: "Domingo" },
                                             { value: "1", label: "Segunda-feira" },

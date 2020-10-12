@@ -2,9 +2,9 @@ import React, { FormEvent, useState } from 'react';
 import PageLogo from '../../components/PageLogo';
 import Input from '../../components/Input';
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 import './styles.scss';
-import { useHistory } from 'react-router-dom';
 
 function Register() {
     const history = useHistory();
@@ -17,7 +17,7 @@ function Register() {
     function handleRegister(e: FormEvent) {
         e.preventDefault();
 
-        api.post('users', {
+        api.post('users/register', {
             name,
             email,
             userName,
@@ -35,10 +35,10 @@ function Register() {
                 <form onSubmit={ handleRegister }>
                     <legend>Cadastro</legend>
                     <p>Preencha os dados abaixo para começar</p>
-                    <Input name="name" placeholder="Nome" onChange={ (e) => {setName(e.target.value) }}/>
-                    <Input name="email" placeholder="Email" onChange={ (e) => {setEmail(e.target.value) }}/>
-                    <Input name="userName" placeholder="Usuário" onChange={ (e) => {setUserName(e.target.value) }}/>
-                    <Input name="password" placeholder="Senha" type="password" onChange={ (e) => {setPassword(e.target.value) }}/>
+                    <Input name="name" placeholder="Nome" onChange={ (e) => { setName(e.target.value) }}/>
+                    <Input name="email" placeholder="Email" onChange={ (e) => { setEmail(e.target.value) }}/>
+                    <Input name="userName" placeholder="Usuário" onChange={ (e) => { setUserName(e.target.value) }}/>
+                    <Input name="password" placeholder="Senha" type="password" onChange={ (e) => { setPassword(e.target.value) }}/>
                     
                     <button type="submit">
                         Cadastrar

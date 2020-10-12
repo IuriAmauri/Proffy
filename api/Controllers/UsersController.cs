@@ -1,4 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using api.Database.Interfaces;
 using api.Dtos;
 using api.Entities;
@@ -6,6 +11,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace api.Controllers
 {
@@ -43,7 +50,7 @@ namespace api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("register")]
         public ActionResult<User> CreateUser(UserDto userCreateDto)
         {
             if (userCreateDto == null)
@@ -59,6 +66,55 @@ namespace api.Controllers
             }
 
             return BadRequest($"Erro ao criar usuário {result.Errors.ToString()}");
+        }
+
+        
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserLoginDto userLogin)
+        {
+            var user = await _userManager.FindByNameAsync(userLogin.UserName);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
+
+            if (result.Succeeded)
+            {
+                var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedUserName == userLogin.UserName.ToUpper());
+
+                var token = GenerateToken(appUser).Result;
+
+                return Ok(new {
+                    token = token,
+                    user = _mapper.Map<UserLoginDto>(appUser)
+                });
+            }
+
+            return Unauthorized();
+        }
+
+        private async Task<string> GenerateToken(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
+            };
+
+            foreach (var role in await _userManager.GetRolesAsync(user))
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+            
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Super Secret Key"));
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature)
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
         }
     }
 }

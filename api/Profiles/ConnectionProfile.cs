@@ -11,6 +11,7 @@ namespace api.Profiles
             CreateMap<Connection, ConnectionDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, UserReadDto>().ReverseMap();
+            CreateMap<User, UserLoginDto>().ReverseMap();
             CreateMap<Class, ClassDto>().ReverseMap();
             CreateMap<Schedule, ScheduleDto>().ReverseMap();
         }

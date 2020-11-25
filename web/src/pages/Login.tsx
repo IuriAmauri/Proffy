@@ -1,10 +1,10 @@
 import React, { FormEvent, useState } from 'react';
-import PageLogo from '../../components/PageLogo';
+import PageLogo from '../components/PageLogo';
 import { Link, useHistory } from 'react-router-dom';
-import api from '../../services/api';
+import api from '../services/api';
 
-import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
-import './styles.scss';
+import purpleHeartIcon from '../assets/images/icons/purple-heart.svg';
+import '../styles/login.scss';
 
 function Login() {
     const history = useHistory();
@@ -21,7 +21,7 @@ function Login() {
             password
         }).then((result) => {
             localStorage.setItem('token', result.data.token);
-            history.push('/');
+            history.push('/landing');
         }).catch((err) => {
             alert('Erro ao realizar login ' + err)
         });

@@ -1,10 +1,10 @@
 import React, { FormEvent, useState } from 'react';
-import PageLogo from '../../components/PageLogo';
-import Input from '../../components/Input';
-import api from '../../services/api';
+import PageLogo from '../components/PageLogo';
+import Input from '../components/Input';
+import api from '../services/api';
 import { useHistory } from 'react-router-dom';
 
-import './styles.scss';
+import '../styles/register.scss';
 
 function Register() {
     const history = useHistory();

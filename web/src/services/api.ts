@@ -11,8 +11,8 @@ api.interceptors.request.use(config => {
         config.headers['Authorization'] = 'Bearer ' + token;
     
     return config; 
-}, error => {
-    Promise.reject(error)
-});
+}, (error => {
+    console.log(error);
+}));
 
 export default api;

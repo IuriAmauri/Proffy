@@ -1,13 +1,13 @@
 import React, { useState, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
-import PageHeader from '../../components/PageHeader';
-import Input from '../../components/Input';
-import TextArea from '../../components/TextArea';
-import Select from '../../components/Select';
-import api from '../../services/api';
+import PageHeader from '../components/PageHeader';
+import Input from '../components/Input';
+import TextArea from '../components/TextArea';
+import Select from '../components/Select';
+import api from '../services/api';
 
-import warningIcon from '../../assets/images/icons/warning.svg';
-import './styles.scss';
+import warningIcon from '../assets/images/icons/warning.svg';
+import '../styles/teacher-form.scss';
 
 function TeacherForm() {
     const history = useHistory();

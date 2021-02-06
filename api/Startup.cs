@@ -96,6 +96,8 @@ namespace api
             {
                 endpoints.MapControllers();
             });
+
+            ProffyPrepRepository.PrepPopulation(app);
         }
 
         private string GetConnectionString()
